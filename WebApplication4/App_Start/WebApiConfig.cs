@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace WebApplication4
@@ -13,6 +14,8 @@ namespace WebApplication4
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -20,5 +23,6 @@ namespace WebApplication4
                 defaults: new { id = RouteParameter.Optional }
             );
         }
+
     }
 }
