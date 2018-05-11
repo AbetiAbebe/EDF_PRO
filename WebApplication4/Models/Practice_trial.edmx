@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ESDprojectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVITIES">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+            <PropertyRef Name="Activity_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="int" Nullable="false" />
+          <Property Name="Activity_ID" Type="int" Nullable="false" />
+          <Property Name="Predicted_Start" Type="datetime" />
+          <Property Name="Actual_Start" Type="datetime" />
+          <Property Name="Predicted_Completion" Type="datetime" />
+          <Property Name="Actual_Completion" Type="datetime" />
+          <Property Name="Estimated_Cost" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="Actual_Cost" Type="decimal" Precision="6" Scale="3" />
+        </EntityType>
+        <EntityType Name="CLIENTS">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="int" Nullable="false" />
+          <Property Name="Client_Name" Type="varchar" MaxLength="25" />
+          <Property Name="Client Email" Type="varchar" MaxLength="50" />
+          <Property Name="Client_contact_number" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Dependences">
+          <Key>
+            <PropertyRef Name="Dependences_ID" />
+          </Key>
+          <Property Name="Dependences_ID" Type="int" Nullable="false" />
+          <Property Name="Activity ID" Type="int" />
+          <Property Name="Task_ID" Type="int" />
+          <Property Name="Dependencies_Task" Type="int" />
+          <Property Name="Dependenciey_Activity" Type="int" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="int" Nullable="false" />
+          <Property Name="Project _name" Type="varchar" MaxLength="50" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Project_Details" Type="varchar" MaxLength="100" />
+          <Property Name="Predicted_Launch" Type="datetime" />
+          <Property Name="Actual _Launch" Type="datetime" />
+          <Property Name="Predicted_Completion" Type="datetime" />
+          <Property Name="Actual_Completion" Type="datetime" />
+          <Property Name="Estimated_Cost" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Actual_Cost" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="Staff_ID" />
+          </Key>
+          <Property Name="Staff_ID" Type="int" Nullable="false" />
+          <Property Name="Staff_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Staff_Type" Type="char" MaxLength="20" />
+          <Property Name="Staff_Contact" Type="varchar" MaxLength="50" />
+          <Property Name="work_hours_per_week" Type="int" />
+          <Property Name="Contract _permantent" Type="char" MaxLength="4" />
+          <Property Name="salary_per_hour" Type="decimal" Precision="6" Scale="3" />
+        </EntityType>
+        <EntityType Name="TASKS">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+            <PropertyRef Name="Task_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="int" Nullable="false" />
+          <Property Name="Task_ID" Type="int" Nullable="false" />
+          <Property Name="Staff_ID" Type="int" />
+          <Property Name="Predicted Start" Type="datetime" />
+          <Property Name="Actual_Start" Type="datetime" />
+          <Property Name="Predicted_Completion" Type="datetime" />
+          <Property Name="Actual_Completion" Type="datetime" />
+          <Property Name="Estimated_Cost" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="Actual_Cost" Type="decimal" Precision="6" Scale="3" />
+        </EntityType>
+        <EntityContainer Name="ESDprojectModelStoreContainer">
+          <EntitySet Name="ACTIVITIES" EntityType="Self.ACTIVITIES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTS" EntityType="Self.CLIENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dependences" EntityType="Self.Dependences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TASKS" EntityType="Self.TASKS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ESDprojectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTIVITIES">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+            <PropertyRef Name="Activity_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="Int32" Nullable="false" />
+          <Property Name="Activity_ID" Type="Int32" Nullable="false" />
+          <Property Name="Predicted_Start" Type="DateTime" Precision="3" />
+          <Property Name="Actual_Start" Type="DateTime" Precision="3" />
+          <Property Name="Predicted_Completion" Type="DateTime" Precision="3" />
+          <Property Name="Actual_Completion" Type="DateTime" Precision="3" />
+          <Property Name="Estimated_Cost" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="Actual_Cost" Type="Decimal" Precision="6" Scale="3" />
+        </EntityType>
+        <EntityType Name="CLIENTS">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="Int32" Nullable="false" />
+          <Property Name="Client_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Client_contact_number" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Dependences">
+          <Key>
+            <PropertyRef Name="Dependences_ID" />
+          </Key>
+          <Property Name="Dependences_ID" Type="Int32" Nullable="false" />
+          <Property Name="Activity_ID" Type="Int32" />
+          <Property Name="Task_ID" Type="Int32" />
+          <Property Name="Dependencies_Task" Type="Int32" />
+          <Property Name="Dependenciey_Activity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="Int32" Nullable="false" />
+          <Property Name="Project__name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Project_Details" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Predicted_Launch" Type="DateTime" Precision="3" />
+          <Property Name="Actual__Launch" Type="DateTime" Precision="3" />
+          <Property Name="Predicted_Completion" Type="DateTime" Precision="3" />
+          <Property Name="Actual_Completion" Type="DateTime" Precision="3" />
+          <Property Name="Estimated_Cost" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Actual_Cost" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="Staff_ID" />
+          </Key>
+          <Property Name="Staff_ID" Type="Int32" Nullable="false" />
+          <Property Name="Staff_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Staff_Type" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Staff_Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="work_hours_per_week" Type="Int32" />
+          <Property Name="Contract__permantent" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="salary_per_hour" Type="Decimal" Precision="6" Scale="3" />
+        </EntityType>
+        <EntityType Name="TASKS">
+          <Key>
+            <PropertyRef Name="Project_ID" />
+            <PropertyRef Name="Task_ID" />
+          </Key>
+          <Property Name="Project_ID" Type="Int32" Nullable="false" />
+          <Property Name="Task_ID" Type="Int32" Nullable="false" />
+          <Property Name="Staff_ID" Type="Int32" />
+          <Property Name="Predicted_Start" Type="DateTime" Precision="3" />
+          <Property Name="Actual_Start" Type="DateTime" Precision="3" />
+          <Property Name="Predicted_Completion" Type="DateTime" Precision="3" />
+          <Property Name="Actual_Completion" Type="DateTime" Precision="3" />
+          <Property Name="Estimated_Cost" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="Actual_Cost" Type="Decimal" Precision="6" Scale="3" />
+        </EntityType>
+        <EntityContainer Name="ESDprojectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTIVITIES" EntityType="Self.ACTIVITIES" />
+          <EntitySet Name="CLIENTS" EntityType="Self.CLIENTS" />
+          <EntitySet Name="Dependences" EntityType="Self.Dependences" />
+          <EntitySet Name="PROJECT" EntityType="Self.PROJECT" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" />
+          <EntitySet Name="TASKS" EntityType="Self.TASKS" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ESDprojectModelStoreContainer" CdmEntityContainer="ESDprojectEntities">
+          <EntitySetMapping Name="ACTIVITIES">
+            <EntityTypeMapping TypeName="ESDprojectModel.ACTIVITIES">
+              <MappingFragment StoreEntitySet="ACTIVITIES">
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Activity_ID" ColumnName="Activity_ID" />
+                <ScalarProperty Name="Predicted_Start" ColumnName="Predicted_Start" />
+                <ScalarProperty Name="Actual_Start" ColumnName="Actual_Start" />
+                <ScalarProperty Name="Predicted_Completion" ColumnName="Predicted_Completion" />
+                <ScalarProperty Name="Actual_Completion" ColumnName="Actual_Completion" />
+                <ScalarProperty Name="Estimated_Cost" ColumnName="Estimated_Cost" />
+                <ScalarProperty Name="Actual_Cost" ColumnName="Actual_Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTS">
+            <EntityTypeMapping TypeName="ESDprojectModel.CLIENTS">
+              <MappingFragment StoreEntitySet="CLIENTS">
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Email" ColumnName="Client Email" />
+                <ScalarProperty Name="Client_contact_number" ColumnName="Client_contact_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dependences">
+            <EntityTypeMapping TypeName="ESDprojectModel.Dependences">
+              <MappingFragment StoreEntitySet="Dependences">
+                <ScalarProperty Name="Dependences_ID" ColumnName="Dependences_ID" />
+                <ScalarProperty Name="Activity_ID" ColumnName="Activity ID" />
+                <ScalarProperty Name="Task_ID" ColumnName="Task_ID" />
+                <ScalarProperty Name="Dependencies_Task" ColumnName="Dependencies_Task" />
+                <ScalarProperty Name="Dependenciey_Activity" ColumnName="Dependenciey_Activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECT">
+            <EntityTypeMapping TypeName="ESDprojectModel.PROJECT">
+              <MappingFragment StoreEntitySet="PROJECT">
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Project__name" ColumnName="Project _name" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Project_Details" ColumnName="Project_Details" />
+                <ScalarProperty Name="Predicted_Launch" ColumnName="Predicted_Launch" />
+                <ScalarProperty Name="Actual__Launch" ColumnName="Actual _Launch" />
+                <ScalarProperty Name="Predicted_Completion" ColumnName="Predicted_Completion" />
+                <ScalarProperty Name="Actual_Completion" ColumnName="Actual_Completion" />
+                <ScalarProperty Name="Estimated_Cost" ColumnName="Estimated_Cost" />
+                <ScalarProperty Name="Actual_Cost" ColumnName="Actual_Cost" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF">
+            <EntityTypeMapping TypeName="ESDprojectModel.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="Staff_ID" ColumnName="Staff_ID" />
+                <ScalarProperty Name="Staff_Name" ColumnName="Staff_Name" />
+                <ScalarProperty Name="Staff_Type" ColumnName="Staff_Type" />
+                <ScalarProperty Name="Staff_Contact" ColumnName="Staff_Contact" />
+                <ScalarProperty Name="work_hours_per_week" ColumnName="work_hours_per_week" />
+                <ScalarProperty Name="Contract__permantent" ColumnName="Contract _permantent" />
+                <ScalarProperty Name="salary_per_hour" ColumnName="salary_per_hour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKS">
+            <EntityTypeMapping TypeName="ESDprojectModel.TASKS">
+              <MappingFragment StoreEntitySet="TASKS">
+                <ScalarProperty Name="Project_ID" ColumnName="Project_ID" />
+                <ScalarProperty Name="Task_ID" ColumnName="Task_ID" />
+                <ScalarProperty Name="Staff_ID" ColumnName="Staff_ID" />
+                <ScalarProperty Name="Predicted_Start" ColumnName="Predicted Start" />
+                <ScalarProperty Name="Actual_Start" ColumnName="Actual_Start" />
+                <ScalarProperty Name="Predicted_Completion" ColumnName="Predicted_Completion" />
+                <ScalarProperty Name="Actual_Completion" ColumnName="Actual_Completion" />
+                <ScalarProperty Name="Estimated_Cost" ColumnName="Estimated_Cost" />
+                <ScalarProperty Name="Actual_Cost" ColumnName="Actual_Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
